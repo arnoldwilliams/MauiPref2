@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiPref2.ViewModels"
+             x:Class="MauiPref2.Views.TopicPreferencesPage"
+             x:DataType="viewmodels:TopicPreferencesViewModel"
+             Title="Notification topics">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="24" Spacing="20">
+
+			<Label Text="Choose which updates you'd like to receive. Toggle a topic on to subscribe, or off to unsubscribe."
+				   FontSize="14"
+				   TextColor="Gray" />
+
+			<!-- Case Update subscription -->
+			<Border StrokeThickness="0"
+					BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
+					StrokeShape="RoundRectangle 12"
+					Padding="16,14">
+
+				<Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+
+					<VerticalStackLayout Spacing="2">
+						<Label Text="Case Update"
+							   FontAttributes="Bold"
+							   FontSize="16" />
+						<Label Text="Subscribe to updates when your case status changes."
+							   FontSize="12"
+							   TextColor="Gray" />
+					</VerticalStackLayout>
+
+					<Switch Grid.Column="1"
+							VerticalOptions="Center"
+							AutomationId="CaseUpdateSwitch"
+							IsToggled="{Binding CaseUpdateSubscribed}" />
+				</Grid>
+			</Border>
+
+			<!-- Case Complete subscription -->
+			<Border StrokeThickness="0"
+					BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
+					StrokeShape="RoundRectangle 12"
+					Padding="16,14">
+
+				<Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+
+					<VerticalStackLayout Spacing="2">
+						<Label Text="Case Complete"
+							   FontAttributes="Bold"
+							   FontSize="16" />
+						<Label Text="Subscribe to notifications when your case is marked complete."
+							   FontSize="12"
+							   TextColor="Gray" />
+					</VerticalStackLayout>
+
+					<Switch Grid.Column="1"
+							VerticalOptions="Center"
+							AutomationId="CaseCompleteSwitch"
+							IsToggled="{Binding CaseCompleteSubscribed}" />
+				</Grid>
+			</Border>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
